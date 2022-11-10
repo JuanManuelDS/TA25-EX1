@@ -26,7 +26,7 @@ public class Articulos {
 	
 	@ManyToOne
 	@JoinColumn
-	private List<Fabricantes> fabricantes;
+	private List<Fabricantes> fabricante;
 	
 	
 	
