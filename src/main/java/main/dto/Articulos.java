@@ -1,7 +1,5 @@
 package main.dto;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,8 +23,52 @@ public class Articulos {
 	private int precio;
 	
 	@ManyToOne
-	@JoinColumn
-	private List<Fabricantes> fabricante;
+	@JoinColumn(name="fabricante")
+	private Fabricantes fabricante;
+
+	public Articulos() {
+		
+	}
+	
+	public Articulos(Long id, String nombre, int precio, Fabricantes fabricante) {
+		this.id = id;
+		this.nombre = nombre;
+		this.precio = precio;
+		this.fabricante = fabricante;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(int precio) {
+		this.precio = precio;
+	}
+
+	public Fabricantes getFabricante() {
+		return fabricante;
+	}
+
+	public void setFabricante(Fabricantes fabricante) {
+		this.fabricante = fabricante;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	@Override
+	public String toString() {
+		return "Articulos [id=" + id + ", nombre=" + nombre + ", precio=" + precio + ", fabricante=" + fabricante + "]";
+	}
 	
 	
 	

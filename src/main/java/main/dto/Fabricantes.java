@@ -4,7 +4,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.ObjectIdGenerators.StringIdGenerator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table (name="fabricantes")
@@ -21,13 +22,12 @@ public class Fabricantes {
 	@OneToMany
 	@JoinColumn(name="id")
 	private List<Articulos> articulos;
-
-	public Fabricantes(Long id, String nombre) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-	}
 	
+	public Fabricantes(String nombre, List<Articulos> articulos) {
+		this.nombre = nombre;
+		this.articulos = articulos;
+	}
+
 	public Fabricantes() {}
 
 	public Long getId() {
@@ -42,6 +42,8 @@ public class Fabricantes {
 		this.nombre = nombre;
 	}
 
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "AsignadoA")
 	public List<Articulos> getArticulos() {
 		return articulos;
 	}
