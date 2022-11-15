@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import main.dto.Articulos;
 import main.services.ArticulosService;
+import main.services.FabricantesService;
 
 @RestController
 @RequestMapping("/api")
@@ -22,6 +23,7 @@ public class ArticulosControllers {
 	
 	@Autowired
 	ArticulosService articulosService;
+	FabricantesService fabricantesService;
 	
 	@GetMapping("/articulos")
 	public List<Articulos> listarArticulos(){

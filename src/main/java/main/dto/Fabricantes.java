@@ -19,11 +19,11 @@ public class Fabricantes {
 	private String nombre;
 	
 	//El punto de unión es el id de esta clase
-	@OneToMany
-	@JoinColumn(name="id")
+	@OneToMany(mappedBy = "fabricante", cascade = CascadeType.ALL)
 	private List<Articulos> articulos;
 	
-	public Fabricantes(String nombre, List<Articulos> articulos) {
+	public Fabricantes(Long id, String nombre, List<Articulos> articulos) {
+		this.id = id;
 		this.nombre = nombre;
 		this.articulos = articulos;
 	}
@@ -43,7 +43,7 @@ public class Fabricantes {
 	}
 
 	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "AsignadoA")
+	@OneToMany(fetch = FetchType.LAZY)
 	public List<Articulos> getArticulos() {
 		return articulos;
 	}

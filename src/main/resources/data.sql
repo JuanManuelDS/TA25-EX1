@@ -1,14 +1,16 @@
 drop table if exists fabricantes;
 create table fabricantes (
-id int auto_increment primary key,
-nombre varchar(100));
+id INT AUTO_INCREMENT,
+nombre VARCHAR(100),
+PRIMARY KEY(id));
 
 drop table if exists articulos;
 create table articulos (
-id int auto_increment primary key,
-nombre varchar(100),
-precio int,
-fabricante int references fabricantes(id) on delete cascade on update cascade);
+id INT AUTO_INCREMENT,
+nombre VARCHAR(100),
+precio INT,
+fabricante INT NOT NULL REFERENCES fabricantes(id) ON DELETE CASCADE ON UPDATE CASCADE,
+PRIMARY KEY(id));
 
 insert into fabricantes (nombre) values ('Dickens-Runte');
 insert into fabricantes (nombre) values ('Fadel-Paucek');
